@@ -73,6 +73,7 @@ public class AppConfig {
 		return http.build();
 	}
 	
+	// trả về một đối tượng BCryptPasswordEncoder được sử dụng để mã hóa mật khẩu.
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

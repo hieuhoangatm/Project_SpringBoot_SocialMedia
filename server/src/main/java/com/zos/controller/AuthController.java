@@ -31,13 +31,14 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 	
-	
+	// xử lý yêu cầu đăng nhập khi có một request GET được gửi đến đường dẫn "/signin".
 	@GetMapping("/signin")
 	public ResponseEntity<User> signinHandler(Authentication auth) throws BadCredentialsException{
 		
 
 		
 		 try {
+				// Tìm kiếm người dùng trong cơ sở dữ liệu dựa trên email 
 		        User user = userRepo.findByEmail(auth.getName())
 		            .orElseThrow(() -> new BadCredentialsException("Invalid Username or password"));
 		        return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
@@ -46,7 +47,7 @@ public class AuthController {
 		    }
 	
 	}
-	
+	// Nếu có lỗi xảy ra trong quá trình đăng ký người dùng, phương thức registerUserHandler sẽ ném ngoại lệ, và nó sẽ được xử lý bởi phương thức được đánh dấu bởi @ExceptionHandler(UserException.class).
 	@PostMapping("/signup")
 	public ResponseEntity<User> registerUserHandler(@RequestBody User user) throws UserException{
 		

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.crypto.SecretKey;
-
+// tạo và gắn JWT vào header của các response.
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,6 +49,7 @@ public class JwtGenratorFilter extends OncePerRequestFilter {
 		
 	}
 	
+	// Sử dụng một Set để loại bỏ các quyền trùng lặp và sau đó chuyển đổi Set này thành một chuỗi, các quyền được phân tách bằng dấu phẩy.
 	private String populateAuthorities(Collection<? extends GrantedAuthority> collection) {
         
     	Set<String> authoritiesSet = new HashSet<>();
@@ -61,6 +62,7 @@ public class JwtGenratorFilter extends OncePerRequestFilter {
     
     }
 	
+	// Phương thức này quyết định xem filter có nên được thực hiện hay không dựa trên đường dẫn của request.
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
 		

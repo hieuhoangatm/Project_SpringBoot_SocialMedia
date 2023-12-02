@@ -75,6 +75,8 @@ public class PostController {
 		return new ResponseEntity<List<Post>>(posts,HttpStatus.OK);
 	}
 	
+
+	// xử lý yêu cầu lấy thông tin bài viết theo Id khi có một request GET được gửi đến đường dẫn "/api/posts/{postId}".
 	@GetMapping("/{postId}")
 	public ResponseEntity<Post> findPostByIdHandler(@PathVariable Integer postId) throws PostException{
 		Post post=postService.findePostById(postId);

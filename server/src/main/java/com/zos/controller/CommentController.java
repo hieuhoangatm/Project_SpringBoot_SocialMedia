@@ -28,8 +28,10 @@ public class CommentController {
 	
 	@Autowired
 	private UserService userService;
-	
+
+	// xử lý yêu cầu tạo mới Comment khi có một request POST được gửi đến đường dẫn "/api/comments/create/{postId}".
 	@PostMapping("/create/{postId}")
+	// lấy thông tin Comment từ phần thân của request.
 	public ResponseEntity<Comments> createCommentHandler(@RequestBody Comments comment, @PathVariable("postId") Integer postId,@RequestHeader("Authorization")String token) throws PostException, UserException{
 		User user = userService.findUserProfile(token);
 		
@@ -38,6 +40,7 @@ public class CommentController {
 		
 	}
 	
+	// xử lý yêu cầu thích một Comment khi có một request PUT được gửi đến đường dẫn "/api/comments/like/{commentId}".
 	
 	@PutMapping("/like/{commentId}")
 	public ResponseEntity<Comments> likeCommentHandler(@PathVariable Integer commentId, @RequestHeader("Authorization")String token) throws UserException, CommentException{
@@ -49,6 +52,7 @@ public class CommentController {
 	}
 	
 	
+	// xử lý yêu cầu không thích một Comment khi có một request PUT được gửi đến đường dẫn "/api/comments/unlike/{commentId}".
 	@PutMapping("/unlike/{commentId}")
 	public ResponseEntity<Comments> unlikeCommentHandler(@RequestHeader("Authorization")String token, @PathVariable Integer commentId) throws UserException, CommentException{
 		User user = userService.findUserProfile(token);
