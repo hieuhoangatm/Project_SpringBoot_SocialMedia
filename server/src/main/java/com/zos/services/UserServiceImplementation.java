@@ -214,7 +214,7 @@ public class UserServiceImplementation implements UserService {
 	public List<User> searchUser(String query) throws UserException {
 		List<User> users=repo.findByQuery(query);
 		if(users.size()==0) {
-			throw new UserException("user not exist");
+			// throw new UserException("user not exist");
 		}
 		return users;
 	}
