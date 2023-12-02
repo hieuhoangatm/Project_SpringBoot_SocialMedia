@@ -32,7 +32,9 @@ public class JwtTokenProvider {
 	    return jwtTokenClaims;
 	}
 	
+	// tạo ra một chuỗi JWT (JSON Web Token) dựa trên thông tin người dùng.
 	public String  generateJwtToken(User user) {
+		// tạo một khóa bí mật từ chuỗi SecurityContest.JWT_KEY và sử dụng nó để ký (sign) JWT.
 		SecretKey key=Keys.hmacShaKeyFor(SecurityContest.JWT_KEY.getBytes());
 		
 		String jwt=Jwts.builder()

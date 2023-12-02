@@ -1,7 +1,7 @@
 package com.zos.dto;
 
 import java.util.Objects;
-
+// Dto truyền tải thông tin người dùng giữa các lớp và tầng khác nhau của ứng dụng
 public class UserDto {
 	
 	private String username;

@@ -28,7 +28,7 @@ public class UserUserDetailService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, BadCredentialsException {
 		
-		
+		// Sử dụng userRepo.findByEmail(username) để tìm kiếm người dùng trong cơ sở dữ liệu dựa trên địa chỉ email.
 		Optional<com.zos.model.User> opt=userRepo.findByEmail(username);
 		
 		

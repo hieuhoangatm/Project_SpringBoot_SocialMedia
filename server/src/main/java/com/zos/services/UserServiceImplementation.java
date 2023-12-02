@@ -165,12 +165,14 @@ public class UserServiceImplementation implements UserService {
 	@Override
 	public User findUserProfile(String token) throws UserException {
 
+		// loại bỏ "Bearer " từ đầu token để chỉ giữ phần chứa thông tin thực sự.
 		token=token.substring(7);
 		
 	    JwtTokenClaims jwtTokenClaims = jwtTokenProvider.getClaimsFromToken(token);
 
 	    String username = jwtTokenClaims.getUsername();
 	    
+		// tìm kiếm người dùng trong cơ sở dữ liệu dựa trên username.
 	    Optional<User> opt = repo.findByEmail(username);
 	    
 	    if(opt.isPresent()) {

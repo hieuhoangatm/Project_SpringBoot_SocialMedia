@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	public Optional<User> findByEmail(String email);
 	
 	public Optional<User> findByUsername(String username);
-	
+	// thực hiện truy vấn vào CSDL
 	@Query("SELECT u FROM User u WHERE u.id IN :users")
     public List<User> findAllUserByUserIds(@Param("users") List<Integer> userIds);
 	

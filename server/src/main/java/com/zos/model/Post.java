@@ -1,7 +1,7 @@
 package com.zos.model;
 import java.time.LocalDateTime;
 import java.util.*;
-
+// Tạo bảng POST lưu vào CSDL
 import com.zos.dto.UserDto;
 
 import jakarta.persistence.AttributeOverride;

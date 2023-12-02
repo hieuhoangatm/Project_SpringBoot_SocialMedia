@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import com.zos.model.Story;
 
 public interface StoryRepository extends JpaRepository<Story, Integer>{
-	
+	// Thực hiện truy vấn
 	@Query("SELECT s FROM Story s WHERE s.userDto.id = :userId")
     List<Story> findAllStoriesByUserId(@Param("userId") Integer userId);
 

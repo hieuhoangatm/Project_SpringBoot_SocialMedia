@@ -1,5 +1,5 @@
 package com.zos.services;
-
+// thực hiện chức năng bình luận
 import com.zos.dto.UserDto;
 import com.zos.exception.CommentException;
 
@@ -36,13 +36,14 @@ public class CommentsServiceImplement implements CommentService {
 	
 	@Override
 	public Comments createComment(Comments comment, Integer postId, Integer userId) throws PostException, UserException {
-		
+		// lấy Comment theo Id
 		User user=userService.findUserById(userId);
 		
 		Post post=postService.findePostById(postId);
 		
 		// TODO Auto-generated method stub
 		
+		// thông tin của người dùng để lưu vào Comments.
 		UserDto userDto=new UserDto();
 		userDto.setEmail(user.getEmail());
 		userDto.setId(user.getId());
@@ -66,6 +67,7 @@ public class CommentsServiceImplement implements CommentService {
 	public Comments findCommentById(Integer commentId) throws CommentException {
 		Optional<Comments> opt=repo.findById(commentId);
 		
+		// nếu không tìm thấy ném một CommentException với thông báo "comment not exist with id : {commentId}".
 		if(opt.isPresent()) {
 			return opt.get();
 		}
@@ -96,11 +98,13 @@ public class CommentsServiceImplement implements CommentService {
 
 	@Override
 	public Comments unlikeComment(Integer commentId, Integer userId) throws UserException, CommentException {
+		// lấy thông tin người dùng từ cơ sở dữ liệu dựa trên userId.
 		User user=userService.findUserById(userId);
 		Comments comment=findCommentById(commentId);
 		
 		comment.getLikedByUsers().remove(user);
 		
+		// lưu cập nhật Comment vào cơ sở dữ liệu
 		return repo.save(comment);
 		
 	}

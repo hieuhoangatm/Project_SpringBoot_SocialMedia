@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import com.zos.model.Post;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
-	
+	// Lần lượt thực hiện truy vấn
 	@Query("select p from Post p where p.user.id=?1")
 	public List<Post> findByUserId (Integer userId);
 	

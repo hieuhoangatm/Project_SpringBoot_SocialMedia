@@ -46,8 +46,10 @@ public class PostServiceImplementation implements PostService {
 		
 		post.setUser(userDto);
 		
+		// Đặt thời điểm tạo bài viết 
 		post.setCreatedAt(LocalDateTime.now());
-		
+
+			// lưu Post vào cơ sở dữ liệu
 			Post createdPost =postRepo.save(post);
 			
 		

@@ -1,5 +1,5 @@
 package com.zos.model;
-
+// Thực hiện tạo bảng "Comments" lưu vào CSDL
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;

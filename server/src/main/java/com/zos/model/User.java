@@ -1,5 +1,5 @@
 package com.zos.model;
-
+// Khởi tạo model người dùng để tạo bảng trong CSDL
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

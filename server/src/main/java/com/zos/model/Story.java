@@ -1,5 +1,5 @@
 package com.zos.model;
-
+// Thực hiện tạo bảng Story lưu vòa CSDL
 import java.time.LocalDateTime;
 
 import com.zos.dto.UserDto;
